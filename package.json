@@ -303,10 +303,16 @@
     },
     "onlyBuiltDependencies": [
       "@parcel/watcher",
+      "@swc/core",
+      "agent-browser",
       "cpu-features",
+      "electron-winstaller",
       "esbuild",
+      "msw",
       "node-pty",
-      "sherpa-onnx"
+      "sherpa-onnx",
+      "ssh2",
+      "windows-native-registry"
     ],
     "patchedDependencies": {
       "node-pty@1.1.0": "config/patches/node-pty@1.1.0.patch",
