@@ -278,6 +278,7 @@ class StarNagService {
   registerIpcHandlers() {}
 }
 const registerMobileHandlers = () => {}
+const setMigrationUnsupportedPtyListener = () => {}
 class AgentBrowserBridge {}
 class EmulatorBridge {}
 const browserCertificateTrustController = {}
