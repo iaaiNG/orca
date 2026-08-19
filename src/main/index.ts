@@ -207,6 +207,7 @@ import {
   settleServeDesktopActivation as settleServeDesktopActivationGate
 } from './startup/serve-desktop-activation'
 import { RateLimitService } from './rate-limits/service'
+import { getInitialCodexRateLimitTarget } from './rate-limits/codex-rate-limit-target'
 const readMiniMaxSessionCookie = () => null
 const getKimiRuntimeTarget = () => null
 const resolveKimiHome = () => null
