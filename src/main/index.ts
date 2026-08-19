@@ -275,6 +275,7 @@ import {
 class StarNagService {
   start() {}
   stop() {}
+  registerIpcHandlers() {}
 }
 class AgentBrowserBridge {}
 class EmulatorBridge {}
