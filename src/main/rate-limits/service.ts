@@ -1555,6 +1555,9 @@ export class RateLimitService {
     provider: ActiveRateLimitProvider,
     fresh: ProviderRateLimits
   ): void {
+    if (!fresh) {
+      return
+    }
     if (fresh.status === 'error') {
       this.activeFailureStreakByProvider[provider] = Math.min(
         this.activeFailureStreakByProvider[provider] + 1,
