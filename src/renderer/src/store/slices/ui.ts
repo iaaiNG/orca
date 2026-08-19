@@ -81,10 +81,8 @@ import {
   normalizeAgentActivityDisplayMode,
   normalizeWorktreeCardProperties
 } from '../../../../shared/constants'
-import {
-  DEFAULT_BROWSER_PAGE_ZOOM_LEVEL,
-  normalizeBrowserPageZoomLevel
-} from '../../../../shared/browser-page-zoom'
+const DEFAULT_BROWSER_PAGE_ZOOM_LEVEL = 0
+const normalizeBrowserPageZoomLevel = (val: number) => val
 import { persistedUIValuesEqual } from '../../../../shared/persisted-ui-equality'
 import {
   normalizeExecutionHostOrder,

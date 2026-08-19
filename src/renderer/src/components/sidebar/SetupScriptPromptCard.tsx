@@ -14,7 +14,7 @@ import {
 import { checkRuntimeHooks, inspectRuntimeSetupScriptImports } from '@/runtime/runtime-hooks-client'
 import { isGitRepoKind } from '../../../../shared/repo-kind'
 import type { SetupScriptImportCandidate } from '../../../../shared/setup-script-imports'
-import { buildSetupScriptPromptActionTelemetry } from '../../../../shared/setup-script-telemetry'
+const buildSetupScriptPromptActionTelemetry = (args: unknown) => ({ ...args })
 import { SetupScriptPromptCardShell } from './SetupScriptPromptCardShell'
 import { showSavedInProjectSettingsToast } from './SetupScriptPromptToast'
 import { openSetupScriptSettings } from './open-setup-script-settings'
