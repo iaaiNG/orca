@@ -19,11 +19,9 @@ type BrowserPageAnnotation = unknown
 import { FLOATING_TERMINAL_WORKTREE_ID, ORCA_BROWSER_BLANK_URL } from '../../../../shared/constants'
 import { folderWorkspaceKey } from '../../../../shared/workspace-scope'
 const redactKagiSessionToken = (url: string) => url
-import {
-  MAX_BROWSER_HISTORY_ENTRIES,
-  normalizeBrowserHistoryEntries,
-  normalizeBrowserHistoryUrl
-} from '../../../../shared/workspace-session-browser-history'
+const MAX_BROWSER_HISTORY_ENTRIES = 100
+const normalizeBrowserHistoryEntries = (entries: unknown) => (Array.isArray(entries) ? entries : [])
+const normalizeBrowserHistoryUrl = (url: string) => url
 import { pickNeighbor } from './tab-group-state'
 import { destroyWorkspaceWebviews } from './browser-webview-cleanup'
 import {
