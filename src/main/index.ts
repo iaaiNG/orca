@@ -208,6 +208,7 @@ import {
 } from './startup/serve-desktop-activation'
 import { RateLimitService } from './rate-limits/service'
 import { getInitialCodexRateLimitTarget } from './rate-limits/codex-rate-limit-target'
+import { getInitialClaudeRateLimitTarget } from './rate-limits/claude-rate-limit-target'
 const readMiniMaxSessionCookie = () => null
 const getKimiRuntimeTarget = () => null
 const resolveKimiHome = () => null
