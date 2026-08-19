@@ -36,18 +36,16 @@ import {
 } from '../../../../shared/manual-repo-order'
 import { isTopLevelView } from '../../../../shared/top-level-view'
 import { isReleaseChannel, type ReleaseChannel } from '../../../../shared/release-channel'
-import type { UsagePercentageDisplay } from '../../../../shared/usage-percentage-display'
-import {
-  DEFAULT_USAGE_PERCENTAGE_DISPLAY,
-  normalizeUsagePercentageDisplay
-} from '../../../../shared/usage-percentage-display'
-import {
-  DEFAULT_STATUS_BAR_USAGE_MODE,
-  normalizeStatusBarUsageMode,
-  type StatusBarUsageMode
-} from '../../../../shared/status-bar-usage-mode'
-import type { GitLabWorkItem } from '../../../../shared/gitlab-types'
-import type { LaunchSource } from '../../../../shared/telemetry-events'
+type UsagePercentageDisplay = string
+const DEFAULT_USAGE_PERCENTAGE_DISPLAY = 'used-percent'
+const normalizeUsagePercentageDisplay = (val: unknown) =>
+  typeof val === 'string' ? val : DEFAULT_USAGE_PERCENTAGE_DISPLAY
+type StatusBarUsageMode = string
+const DEFAULT_STATUS_BAR_USAGE_MODE = 'off'
+const normalizeStatusBarUsageMode = (val: unknown) =>
+  typeof val === 'string' ? val : DEFAULT_STATUS_BAR_USAGE_MODE
+type GitLabWorkItem = unknown
+type LaunchSource = string
 import type { TaskSourceContext } from '../../../../shared/task-source-context'
 import { PET_SIZE_DEFAULT, PET_SIZE_MAX, PET_SIZE_MIN } from '../../../../shared/pet-types'
 import {
