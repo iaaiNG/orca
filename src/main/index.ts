@@ -277,6 +277,7 @@ class StarNagService {
   stop() {}
   registerIpcHandlers() {}
 }
+const registerMobileHandlers = () => {}
 class AgentBrowserBridge {}
 class EmulatorBridge {}
 const browserCertificateTrustController = {}
