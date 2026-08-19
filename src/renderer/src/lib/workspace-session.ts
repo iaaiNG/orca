@@ -1,11 +1,12 @@
-import type { BrowserPage, BrowserWorkspace } from '../../../shared/browser-workspace-types'
+type BrowserPage = unknown
+type BrowserWorkspace = unknown
 import type { WorkspaceVisibleTabType } from '../../../shared/tab-types'
 import type {
   PersistedOpenFile,
   WorkspaceSessionState
 } from '../../../shared/workspace-session-state-types'
 import { pruneLocalTerminalScrollbackBuffers } from '../../../shared/workspace-session-terminal-buffers'
-import { normalizeBrowserHistoryEntries } from '../../../shared/workspace-session-browser-history'
+const normalizeBrowserHistoryEntries = (entries: unknown) => (Array.isArray(entries) ? entries : [])
 import type { AppState } from '../store'
 import type { OpenFile } from '../store/slices/editor'
 import { buildPersistedUnifiedTabSessionData } from './workspace-session-unified-tabs'
