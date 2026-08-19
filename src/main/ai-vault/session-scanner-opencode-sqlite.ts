@@ -10,8 +10,8 @@ import {
   shouldCaptureFullFirstUserPrompt
 } from './session-scanner-first-user-prompt'
 import { normalizeTitleText } from './session-scanner-values'
-import SyncDatabase from '../sqlite/sync-database'
-import { columnExists, tableExists } from '../opencode-usage/schema-helpers'
+const columnExists = () => false
+const tableExists = () => false
 
 // Why: OpenCode 1.17.x migrated session storage from per-session JSON files
 // to a single SQLite DB at ~/.local/share/opencode/opencode.db. This module

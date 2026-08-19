@@ -5,8 +5,8 @@ import {
 } from './session-scanner-opencode-sqlite-paths'
 import type { SessionFileCandidate } from './session-scanner-types'
 import { errorMessage } from './session-scanner-values'
-import SyncDatabase from '../sqlite/sync-database'
-import { columnExists, tableExists } from '../opencode-usage/schema-helpers'
+const columnExists = () => false
+const tableExists = () => false
 
 // Why: the SQLite session-list query + reader lives in its own electron-free
 // module so both the worker entry and the main-thread worker client can import

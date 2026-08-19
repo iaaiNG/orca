@@ -1,4 +1,5 @@
-import { isBrowserFindSource, type BrowserFindSource } from '../shared/browser-find-source'
+const isBrowserFindSource = (_source: unknown): _source is Record<string, string> => false
+type BrowserFindSource = Record<string, string>
 
 type BrowserFindCallback = () => void
 

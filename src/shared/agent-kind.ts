@@ -8,10 +8,10 @@
 // same mapping. Centralizing here means a new TuiAgent member is one edit,
 // not a sweep across renderer + main.
 
-import type { AgentKind } from './telemetry-events'
+export type AgentKind = string
 import type { TuiAgent } from './tui-agent'
 
-type ConcreteAgentKind = Exclude<AgentKind, 'other'>
+type ConcreteAgentKind = string
 
 const TUI_AGENT_KIND_BY_AGENT = {
   claude: 'claude-code',

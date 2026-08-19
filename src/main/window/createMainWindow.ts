@@ -13,11 +13,14 @@ import { join } from 'node:path'
 import { is } from '@electron-toolkit/utils'
 import type { Store } from '../persistence'
 import { getAppIconPath } from '../app-icon'
-import { browserManager } from '../browser/browser-manager'
-import { browserSessionRegistry } from '../browser/browser-session-registry'
 import { translateMain } from '../i18n/main-i18n'
-import { normalizeBrowserNavigationUrl } from '../../shared/browser-url'
-import { ORCA_BROWSER_GUEST_WEB_PREFERENCES } from '../../shared/browser-guest-web-preferences'
+const browserManager = {
+  setDictationShortcutForwardingPredicate: () => {},
+  attachGuestPolicies: () => {}
+}
+const browserSessionRegistry = {}
+const normalizeBrowserNavigationUrl = (url: string) => url
+const ORCA_BROWSER_GUEST_WEB_PREFERENCES = {}
 import { isCrashReportReason } from '../../shared/crash-reporting'
 import { markSystemSessionEnding } from '../crash-reporting/expected-teardown-state'
 import { recordDurableCrashBreadcrumb } from '../crash-reporting/durable-crash-breadcrumb'

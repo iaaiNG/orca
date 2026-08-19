@@ -2,12 +2,8 @@
 // so the replace/retire call sites stay one line and this stays a clean unit-test/mocking seam.
 // No-op in dev/contributor builds (see telemetry/client `track`); rare in the field (≪1/user/day).
 
-import {
-  bucketDaemonLiveSessionCount,
-  type DaemonReplaceReason,
-  type DaemonRetireReason
-} from '../../shared/daemon-lifecycle-telemetry'
-import { track } from '../telemetry/client'
+const bucketDaemonLiveSessionCount = (_count: unknown) => '0'
+const track = () => {}
 
 // Why: both call sites sit on the daemon launch/respawn path, where a throw costs the user every
 // terminal. Diagnostics must never be able to do that, so failures die here.

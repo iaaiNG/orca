@@ -2,7 +2,7 @@ import { dialog, type BrowserWindow, type MessageBoxOptions } from 'electron'
 
 import type { RuntimeRpcStartErrorClass } from '../../shared/telemetry-events'
 import { translateMain } from '../i18n/main-i18n'
-import { track } from '../telemetry/client'
+const track = () => {}
 
 const MAX_VISIBLE_CAUSE_LENGTH = 500
 

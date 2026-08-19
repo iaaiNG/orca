@@ -89,11 +89,11 @@ import { getSshGitUsername, resolveLocalGitUsername } from '../git/git-username'
 import { enrichRepoGitUsernames } from '../repo-git-username-enrichment'
 import { getActiveMultiplexer } from './ssh'
 import { normalizeSparseDirectories } from './sparse-checkout-directories'
-import { track } from '../telemetry/client'
 import { scheduleCurrentWorktreeBaseDirectoryWatcherSync } from './worktree-base-directory-watcher'
 import { wakeFolderRepoGitUpgradeWatch } from './folder-repo-git-upgrade-wake'
-import { getCohortAtEmit } from '../telemetry/cohort-classifier'
-import type { RepoMethod } from '../../shared/telemetry-events'
+const track = () => {}
+const getCohortAtEmit = () => 'default'
+type RepoMethod = string
 import type {
   HostRepoCatalogSnapshot,
   ListReposForExecutionHostArgs

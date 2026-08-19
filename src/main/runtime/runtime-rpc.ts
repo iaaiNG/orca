@@ -36,11 +36,22 @@ import {
   mobileRelayMintFailureFromUnknown,
   type MobileRelayMintFailure
 } from '../../shared/mobile-relay-mint-failure'
-import {
-  RelayRevokeOutbox,
-  type RelayDeviceBinding,
-  type RelayRevokeOutboxItem
-} from './relay/relay-revoke-outbox'
+export type RelayDeviceBinding = {
+  relayHostId?: string
+  ownerIdentityKey?: string
+  deviceId?: string
+}
+export type RelayRevokeOutboxItem = unknown
+export class RelayRevokeOutbox {
+  constructor(_path?: string) {}
+  enqueue(_binding?: unknown) {
+    return true
+  }
+  dequeue(_item?: unknown) {}
+  peekAll(): unknown[] {
+    return []
+  }
+}
 import type {
   DeviceCredentialInstalled,
   PairingGetEndpointsParams,

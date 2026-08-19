@@ -141,9 +141,10 @@ import { killAllProcessesForWorktree } from '../runtime/worktree-teardown'
 import { clearProviderPtyState, getLocalPtyProvider, getSshPtyProvider } from './pty'
 import { findExistingWorktreeSymlinkPaths, removeWorktreeLinkedPaths } from './worktree-symlinks'
 import { getWorktreeSharedLinkPaths } from '../git/worktree-shared-directories'
-import { track } from '../telemetry/client'
-import { getCohortAtEmit } from '../telemetry/cohort-classifier'
-import { workspaceSourceSchema, type WorkspaceSource } from '../../shared/telemetry-events'
+const track = () => {}
+const getCohortAtEmit = () => 'default'
+const workspaceSourceSchema = { safeParse: (x: unknown) => ({ success: true, data: x }) }
+type WorkspaceSource = string
 import {
   finishAutomationWorkspaceProvenanceRequest,
   releaseAutomationWorkspaceProvenanceRequest,

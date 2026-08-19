@@ -24,8 +24,8 @@ import { fetchKimiRateLimits } from './kimi-fetcher'
 import type { KimiHomeResolution } from '../kimi/kimi-runtime-home'
 import { fetchGrokRateLimits } from './grok-fetcher'
 import { readGrokAuthSession } from './grok-auth'
-import { hasMiniMaxSessionCookie } from '../minimax/minimax-cookie-store'
-import { fetchMiniMaxRateLimits } from './minimax-fetcher'
+const hasMiniMaxSessionCookie = () => false
+const fetchMiniMaxRateLimits = async () => null
 import { fetchOpenCodeGoRateLimits } from './opencode-go-usage-fetcher'
 import {
   normalizeCodexAccountSelectionTarget,

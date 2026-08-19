@@ -1,5 +1,9 @@
 import { webContents } from 'electron'
-import { browserManager } from '../browser/browser-manager'
+const browserManager = {
+  getWebContentsIdByTabId: () => new Map(),
+  getWorktreeIdForTab: (_tabId: string) => undefined,
+  getGuestWebContentsId: (_tabId: string) => undefined
+}
 
 // Why: CLI-driven tab creation must wait until the renderer mounts the webview
 // and calls registerGuest, so the tab has a webContentsId and is operable by

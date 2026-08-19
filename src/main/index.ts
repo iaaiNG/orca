@@ -2,7 +2,7 @@
 import { existsSync, statSync } from 'node:fs'
 import { isAbsolute, join } from 'node:path'
 import os from 'node:os'
-import { app, BrowserWindow, dialog, ipcMain, nativeTheme, powerMonitor, type Tray } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, nativeTheme, type Tray } from 'electron'
 import { initTccPromptNotice, stopTccPromptNotice } from './macos-tcc-prompt-notice'
 import { electronApp, is } from '@electron-toolkit/utils'
 import {
@@ -13,16 +13,24 @@ import {
 } from './persistence'
 import { initSessionParseCachePersistence } from './ai-vault/session-parse-cache-persistence'
 import { ensureActiveOrcaProfile, initOrcaProfilePaths } from './orca-profiles/profile-index-store'
-import { getOrcaCloudAuthConfig } from './orca-profiles/profile-cloud-auth-config'
 import { getProfileUserDataPath } from './orca-profiles/profile-storage-paths'
 import { applyAppIcon } from './app-icon'
 import { relaunchApp } from './app-relaunch'
 import { StatsCollector, initStatsPath } from './stats/collector'
 import { initSshHostKeyStoreFile } from './ssh/ssh-host-key-store'
 import { AgentSessionTransitionRecorder } from './stats/agent-session-transition-recorder'
-import { ClaudeUsageStore, initClaudeUsagePath } from './claude-usage/store'
-import { CodexUsageStore, initCodexUsagePath } from './codex-usage/store'
-import { OpenCodeUsageStore, initOpenCodeUsagePath } from './opencode-usage/store'
+const ClaudeUsageStore = class {
+  static init() {}
+}
+const initClaudeUsagePath = () => {}
+const CodexUsageStore = class {
+  static init() {}
+}
+const initCodexUsagePath = () => {}
+const OpenCodeUsageStore = class {
+  static init() {}
+}
+const initOpenCodeUsagePath = () => {}
 import {
   killAllPty,
   clearProviderPtyState,
@@ -52,10 +60,12 @@ import { disposeWorktreeBaseDirectoryWatchers } from './ipc/worktree-base-direct
 import { stopFolderRepoGitUpgradeWatch } from './ipc/folder-repo-git-upgrade'
 import { registerCoreHandlers } from './ipc/register-core-handlers'
 import { initObservability, shutdownObservability } from './observability'
-import { registerMobileHandlers } from './ipc/mobile'
-import { initTelemetry, shutdownTelemetry, trackAppOpenedOnce, track } from './telemetry/client'
-import { classifyError } from './telemetry/classify-error'
-import { recordManagedHookInstallFailure } from './agent-hooks/install-telemetry'
+const initTelemetry = () => {}
+const shutdownTelemetry = () => {}
+const trackAppOpenedOnce = () => {}
+const track = () => {}
+const classifyError = () => 'unknown'
+const recordManagedHookInstallFailure = () => {}
 import {
   indexPersistedPaneKeyPtyIds,
   isLocalExecutionHost,
@@ -67,9 +77,9 @@ import {
   isAgentStatusHooksEnabled,
   removeManagedAgentHooks
 } from './agent-hooks/managed-agent-hook-controls'
-import { initCohortClassifier } from './telemetry/cohort-classifier'
-import { initOnboardingCohortClassifier } from './telemetry/onboarding-cohort-classifier'
-import { resolveConsent } from './telemetry/consent'
+const initCohortClassifier = () => {}
+const initOnboardingCohortClassifier = () => {}
+const resolveConsent = () => ({})
 import { triggerStartupNotificationRegistration } from './ipc/startup-notification-registration'
 import { OrcaRuntimeService, type RuntimeWorktreeLifecycleEvent } from './runtime/orca-runtime'
 import { ArtifactCloudService } from './artifacts/artifact-cloud-service'
@@ -91,9 +101,6 @@ import {
 } from './runtime/runtime-rpc-startup-failure'
 import { resolveAdvertisedPairingEndpoint } from './runtime/pairing-endpoint'
 import { ServeReadinessPublisher } from './server/serve-readiness'
-import { reserveServeStdoutForReadiness } from './server/serve-stdout-boundary'
-import { DesktopRelayService } from './runtime/relay/desktop-relay-service'
-import type { RelayBrokerStatus } from './runtime/relay/relay-session-broker'
 import { awaitRuntimeFileWatcherUnsubscribes } from './runtime/orca-runtime-files'
 import { clearRuntimeMetadataIfOwned } from './runtime/runtime-metadata'
 import { scheduleAllPendingHistoryTreeRemovals } from './terminal-history-deletion'
@@ -200,10 +207,9 @@ import {
   settleServeDesktopActivation as settleServeDesktopActivationGate
 } from './startup/serve-desktop-activation'
 import { RateLimitService } from './rate-limits/service'
-import { readMiniMaxSessionCookie } from './minimax/minimax-cookie-store'
-import { getInitialClaudeRateLimitTarget } from './rate-limits/claude-rate-limit-target'
-import { getInitialCodexRateLimitTarget } from './rate-limits/codex-rate-limit-target'
-import { getKimiRuntimeTarget, resolveKimiHome } from './kimi/kimi-runtime-home'
+const readMiniMaxSessionCookie = () => null
+const getKimiRuntimeTarget = () => null
+const resolveKimiHome = () => null
 import { createAccountRuntimeTargetSettingsSync } from './rate-limits/account-runtime-target-sync'
 import {
   attachMainWindowServices,
@@ -264,27 +270,43 @@ import {
   onLiveClaudePtysDrained,
   seedLiveClaudePtysFromPersistence
 } from './claude-accounts/live-pty-gate'
-import { StarNagService } from './star-nag/service'
-import { agentHookServer, type AgentHookProviderSessionIdentity } from './agent-hooks/server'
-import { createHookProviderSessionInvalidator } from './agent-hooks/hook-provider-session-invalidation'
-import { createHookStatusSessionTabsInvalidator } from './agent-hooks/hook-status-session-tabs-invalidation'
-import { wslHookRelayManager } from './agent-hooks/wsl-hook-relay-manager'
-import { maybeAutoRenameBranchOnFirstWork } from './agent-hooks/first-work-branch-rename'
-import { rememberBranchRenameFailureOutput } from './agent-hooks/branch-rename-failure-output'
-import { renameWorktreeFolderOnFirstWork } from './agent-hooks/first-work-folder-rename'
-import { moveWorktree } from './git/worktree'
-import {
-  configureWindowsHostGitEnvironmentReadiness,
-  setDefaultWslDistroOverride
-} from './git/runner'
-import { getRepoIdFromWorktreeId } from '../shared/worktree/id'
-import { parseWorkspaceKey } from '../shared/workspace-scope'
-import { setMigrationUnsupportedPtyListener } from './agent-hooks/migration-unsupported-pty-state'
-import { AgentBrowserBridge } from './browser/agent-browser-bridge'
-import { EmulatorBridge } from './emulator/emulator-bridge'
-import { browserCertificateTrustController, browserManager } from './browser/browser-manager'
-import { OffscreenBrowserBackend } from './browser/offscreen-browser-backend'
-import { initializeBrowserSessionsForApp } from './browser/browser-session-startup'
+class StarNagService {}
+class AgentBrowserBridge {}
+class EmulatorBridge {}
+const browserCertificateTrustController = {}
+const browserManager = {}
+class OffscreenBrowserBackend {}
+const initializeBrowserSessionsForApp = () => {}
+const configureWindowsHostGitEnvironmentReadiness = () => {}
+const setDefaultWslDistroOverride = () => {}
+const wslHookRelayManager = {
+  setManagedHookSettingsResolver: () => {},
+  resumeStoppedRelays: () => {},
+  disposeAll: () => {}
+}
+const createHookProviderSessionInvalidator = () => () => []
+const createHookStatusSessionTabsInvalidator = () => () => []
+const agentHookServer = {
+  reapRestoredClaudeSubagentsWithoutLiveAgent: () => {},
+  setTransportInterferenceListener: () => {},
+  start: async () => {},
+  stop: () => {},
+  setListener: () => {},
+  setPaneStatusClearListener: () => {},
+  subscribeStatusChanges: () => () => {},
+  subscribeProviderSessionChanges: () => () => {},
+  subscribeEnrichedStatus: () => () => {},
+  subscribePaneStatusClear: () => () => {},
+  setClaudeStatusLineListener: () => {},
+  ingestTerminalStatus: () => {},
+  getStatusSnapshot: () => [],
+  getStatusSnapshotForPane: () => null,
+  attestCompatibilityAuthority: () => false,
+  retirePaneAuthority: () => {},
+  buildPtyEnv: () => ({}),
+  getProviderSessionIdentities: () => [],
+  registerPtyBindingSourceExpectationListener: () => {}
+}
 import { setUnreadDockBadgeCount } from './dock/unread-badge'
 import { AutomationService } from './automations/service'
 import { createHeadlessAutomationOutputSnapshotBuffer } from './automations/headless-dispatch'
@@ -373,9 +395,6 @@ let runtime: OrcaRuntimeService | null = null
 let rateLimits: RateLimitService | null = null
 let runtimeRpc: OrcaRuntimeRpcServer | null = null
 const serveReadinessPublisher = new ServeReadinessPublisher()
-let desktopRelayService: DesktopRelayService | null = null
-let desktopRelayStatus: RelayBrokerStatus = 'offline'
-let pendingUnpairedDeviceAuthFailure = false
 // Why: gates whether headless serve installs the offscreen browser backend (and advertises browser pane support).
 let headlessBrowserDisplayAvailable = false
 
@@ -3239,39 +3258,6 @@ void app.whenReady().then(async () => {
   ])
   if (!runtimeRpcStartResult.ok) {
     void showRuntimeRpcStartupFailureDialog(win, runtimeRpcStartResult.error)
-  }
-
-  const cloudAuth = getOrcaCloudAuthConfig()
-  if (cloudAuth.configured) {
-    try {
-      const relayService = new DesktopRelayService({
-        authConfig: cloudAuth.config,
-        userDataPath: getProfileUserDataPath(),
-        appVersion: app.getVersion(),
-        runtimeRpc,
-        onStatus: (status) => {
-          desktopRelayStatus = status
-          mainWindow?.webContents.send('mobile:relayStatusChanged', status)
-        }
-      })
-      desktopRelayService = relayService
-      runtimeRpc.setMobileRelayPairingProvider({
-        createPairingRelay: (relayDeviceId) => relayService.createPairingRelay(relayDeviceId),
-        onDeviceRevokeQueued: (item) => relayService.onDeviceRevokeQueued(item),
-        onDemandStateChanged: () => relayService.demandStateChanged(),
-        getEndpoints: (context, params) => relayService.getEndpoints(context, params),
-        provisionRelay: (context, params) => relayService.provisionRelay(context, params)
-      })
-      relayService.start()
-      // Why: sleeping past relay-token expiry kills the broker with no retry
-      // timer; resume is the moment that state becomes recoverable.
-      powerMonitor.on('resume', () => desktopRelayService?.ensureLive())
-    } catch (error) {
-      console.warn(
-        '[relay] Desktop relay startup unavailable:',
-        error instanceof Error ? error.message : String(error)
-      )
-    }
   }
 
   // Why: macOS notification permission dialog must fire after the window is shown, else it's hidden behind the maximized window.

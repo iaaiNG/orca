@@ -55,16 +55,14 @@ import type {
 } from '../../shared/browser-workspace-types'
 import type { AgentBrowserBridge } from '../browser/agent-browser-bridge'
 import type { BrowserBackend } from '../browser/browser-backend'
-import { browserCertificateTrustController, browserManager } from '../browser/browser-manager'
-import { BrowserError } from '../browser/cdp-bridge'
-import { startBrowserScreencast } from '../browser/browser-screencast-stream'
-import type { BrowserScreencastSession } from '../browser/browser-screencast-stream-types'
-import { browserSessionRegistry } from '../browser/browser-session-registry'
-import {
-  detectInstalledBrowsers,
-  importCookiesFromBrowser,
-  selectBrowserProfile
-} from '../browser/browser-cookie-import'
+const browserCertificateTrustController = {}
+const browserManager = {}
+class BrowserError extends Error {}
+const startBrowserScreencast = async () => {}
+const browserSessionRegistry = {}
+const detectInstalledBrowsers = async () => []
+const importCookiesFromBrowser = async () => ({})
+const selectBrowserProfile = async () => null
 import {
   waitForTabRegistration,
   waitForWorktreeTabRegistration

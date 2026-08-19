@@ -28,7 +28,7 @@ import type {
   AutomationUpdateInput
 } from '../../../shared/automations-types'
 import { normalizeProxyUrl } from '../../../shared/network-proxy'
-import { normalizeKagiSessionLink } from '../../../shared/browser-url'
+const normalizeKagiSessionLink = (link: unknown) => link
 import type { FolderWorkspace, WorkspaceKey } from '../../../shared/folder-workspace-types'
 import type { GlobalSettings } from '../../../shared/global-settings-types'
 import type { OnboardingChecklistState } from '../../../shared/onboarding-state-types'
@@ -92,7 +92,7 @@ import {
 } from '../../../shared/constants'
 import { parseWorkspaceSessionSalvaging } from '../../../shared/workspace-session-salvage'
 import { isExistingPersistedProfile } from '../../../shared/project-order-manual-default-notice'
-import { resolveUsagePercentageDisplayChangeNoticeDismissed } from '../../../shared/usage-percentage-display-change-notice'
+const resolveUsagePercentageDisplayChangeNoticeDismissed = () => true
 import { normalizePRBotAuthorOverrides } from '../../../shared/pr-bot-author-overrides'
 import { toRelaySshPtyId } from '../../providers/ssh-pty-id'
 import { isTerminalLeafId } from '../../../shared/stable-pane-id'
@@ -106,7 +106,7 @@ import {
   backfillAutomationRunNumbers,
   pruneAutomationRuns
 } from '../../../shared/automation-run-retention'
-import { pruneWorkspaceSessionBrowserHistory } from '../../../shared/workspace-session-browser-history'
+const pruneWorkspaceSessionBrowserHistory = (history: unknown) => history
 import { normalizeRetirableGeneratedName } from '../../worktree-name-retirement'
 import { recordRetirementNamespaceRegistry } from '../../worktree-retirement-namespace'
 import {

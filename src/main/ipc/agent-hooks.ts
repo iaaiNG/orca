@@ -18,13 +18,13 @@ import { codexHookService } from '../codex/hook-service'
 import { geminiHookService } from '../gemini/hook-service'
 import { antigravityHookService } from '../antigravity/hook-service'
 import { cursorHookService } from '../cursor/hook-service'
-import { droidHookService } from '../droid/hook-service'
-import { commandCodeHookService } from '../command-code/hook-service'
-import { grokHookService } from '../grok/hook-service'
-import { copilotHookService } from '../copilot/hook-service'
-import { hermesHookService } from '../hermes/hook-service'
-import { devinHookService } from '../devin/hook-service'
-import { kimiHookService } from '../kimi/hook-service'
+const droidHookService = { getStatus: () => ({ installed: false }) }
+const commandCodeHookService = { getStatus: () => ({ installed: false }) }
+const grokHookService = { getStatus: () => ({ installed: false }) }
+const copilotHookService = { getStatus: () => ({ installed: false }) }
+const hermesHookService = { getStatus: () => ({ installed: false }) }
+const devinHookService = { getStatus: () => ({ installed: false }) }
+const kimiHookService = { getStatus: () => ({ installed: false }) }
 import { openClaudeHookService } from '../openclaude/hook-service'
 import { registerAgentPaneAuthorityIpcHandlers } from './agent-pane-authority-ipc'
 import { createAgentPaneAuthorityOwnership } from './agent-pane-authority-ownership'

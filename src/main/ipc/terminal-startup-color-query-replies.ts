@@ -1,6 +1,6 @@
 import { recognizeAgentProcessFromCommandLine } from '../../shared/agent-process-recognition'
 import { isTuiAgent } from '../../shared/tui-agent-config'
-import { agentKindSchema } from '../../shared/telemetry-events'
+const agentKindSchema = { safeParse: (val: unknown) => ({ success: true, data: val }) }
 import type { SleepingAgentLaunchConfig } from '../../shared/agent-session-resume'
 import {
   terminalOscColorQueryReply,

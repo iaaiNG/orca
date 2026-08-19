@@ -10,10 +10,8 @@ import { walkSessionFiles } from '../ai-vault/session-scanner-discovery'
 import { OMP_SESSION_ARTIFACT_DIR_PATTERN } from '../ai-vault/session-scanner-omp-subagent-transcripts'
 import { normalizeAgentSessionsDir } from '../ai-vault/session-scanner-values'
 import { resolveOrcaManagedCodexHomePath } from '../codex/codex-home-paths'
-import {
-  findGrokChatHistoryBySessionId,
-  resolveGrokSessionsDir
-} from '../../shared/grok-session-paths'
+const findGrokChatHistoryBySessionId = () => null
+const resolveGrokSessionsDir = () => ''
 import { toHostReadableTranscriptPath, wslCodexSessionsDirs } from './host-readable-transcript-path'
 import { findWslCodexSessionPath } from './wsl-codex-session-path-scan'
 import { wslTranscriptFsRefusal, type WslTranscriptFsError } from './wsl-transcript-fs-gate'

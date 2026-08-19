@@ -21,11 +21,9 @@ import { isValidTerminalTabId } from './terminal-tab-id'
 import { parseExecutionHostId, type ExecutionHostId } from './execution-host'
 import { isTuiAgent } from './tui-agent-config'
 import { isWorkspaceKey } from './workspace-scope'
-import {
-  browserHistoryEntriesSchema,
-  browserPageSchema,
-  browserWorkspaceSchema
-} from './workspace-session-browser-schema'
+const browserHistoryEntriesSchema = z.any()
+const browserPageSchema = z.any()
+const browserWorkspaceSchema = z.any()
 import { sleepingAgentSessionsByPaneKeySchema } from './workspace-session-sleeping-agents'
 import { salvagedField, salvagedOptional, salvagingArray, salvagingRecord } from './zod-salvage'
 

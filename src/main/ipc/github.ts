@@ -109,9 +109,9 @@ import type {
   UpdateProjectItemFieldArgs,
   UpdatePullRequestBySlugArgs
 } from '../../shared/github/project-request-types'
-import { appStarSourceSchema } from '../../shared/gh-star-source'
-import { track } from '../telemetry/client'
-import { getCohortAtEmit } from '../telemetry/cohort-classifier'
+const appStarSourceSchema = { parse: (x: unknown) => x }
+const track = () => {}
+const getCohortAtEmit = () => 'default'
 import { sendToTrustedUIRenderer } from './ui'
 
 const prRefreshVisibilityCleanupRegistered = new Set<number>()

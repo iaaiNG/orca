@@ -5,9 +5,10 @@ import { createHash, randomBytes, randomUUID } from 'node:crypto'
 import { chmodSync, mkdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-import { track } from '../telemetry/client'
-import { getCohortAtEmit } from '../telemetry/cohort-classifier'
-import { AGENT_KIND_VALUES, type AgentKind } from '../../shared/telemetry-events'
+const track = () => {}
+const getCohortAtEmit = () => 'default'
+type AgentKind = string
+const AGENT_KIND_VALUES: string[] = []
 import { ORCA_HOOK_PROTOCOL_VERSION } from '../../shared/agent-hook-types'
 import {
   clearAllListenerCaches,

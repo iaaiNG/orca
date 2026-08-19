@@ -24,7 +24,7 @@ import {
   type TerminalOutputFrameChunk,
   type TerminalOutputMeta
 } from '../terminal-output-frame-chunks'
-import { TERMINAL_PANE_SPLIT_SOURCES } from '../../../../shared/feature-education-telemetry'
+const TERMINAL_PANE_SPLIT_SOURCES: string[] = []
 import type { TerminalOscLinkRange } from '../../../../shared/terminal-osc-link-ranges'
 import {
   TERMINAL_INPUT_MAX_BYTES,

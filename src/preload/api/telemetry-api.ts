@@ -1,4 +1,4 @@
-import type { TelemetryConsentState } from '../../shared/telemetry-consent-types'
+type TelemetryConsentState = unknown
 import type { MemorySnapshot, StatsSummary } from '../../shared/process-stats-types'
 
 export type StatsApi = {

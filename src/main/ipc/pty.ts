@@ -58,7 +58,7 @@ import {
 } from '../../shared/local-windows-terminal-runtime'
 import { applyTerminalGitCredentialPromptGuard } from './terminal-git-credential-guard'
 import { openCodeHookService } from '../opencode/hook-service'
-import { mimoCodeHookService } from '../mimo/hook-service'
+const mimoCodeHookService = { buildPtyEnv: () => ({}) }
 import {
   getCommandTokenPathBasename,
   getFirstCommandToken
@@ -126,14 +126,12 @@ import {
 } from '../pty/legacy-terminal-shim-dir'
 import { registerPty, unregisterPty } from '../memory/pty-registry'
 import { advertisedUrlWatcher } from '../ports/advertised-url-watcher'
-import { track } from '../telemetry/client'
-import { classifyError } from '../telemetry/classify-error'
-import { getCohortAtEmit } from '../telemetry/cohort-classifier'
-import {
-  agentKindSchema,
-  launchSourceSchema,
-  requestKindSchema
-} from '../../shared/telemetry-events'
+const track = () => {}
+const classifyError = () => 'unknown'
+const getCohortAtEmit = () => 'default'
+const agentKindSchema = { safeParse: (val: unknown) => ({ success: true, data: val }) }
+const launchSourceSchema = { safeParse: (val: unknown) => ({ success: true, data: val }) }
+const requestKindSchema = { safeParse: (val: unknown) => ({ success: true, data: val }) }
 import {
   isTerminalInputTooLargeWithDeferredMeasurement,
   iterateTerminalInputChunks

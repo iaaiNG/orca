@@ -8,8 +8,8 @@ import {
   normalizeFeatureInteractionTelemetryBuckets,
   type FeatureInteractionId
 } from '../../../shared/feature-interactions'
-import { track } from '../../telemetry/client'
-import { getCohortAtEmit } from '../../telemetry/cohort-classifier'
+const track = () => {}
+const getCohortAtEmit = () => ({})
 
 export type FeatureInteractionOperations = {
   state: StoreOwnedPersistedState

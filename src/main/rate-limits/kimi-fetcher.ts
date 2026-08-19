@@ -7,7 +7,8 @@ import type {
   UsageRateLimitMetadata
 } from '../../shared/rate-limit-types'
 import { parseWslUncPath } from '../../shared/wsl-paths'
-import { getHostKimiHome, type KimiHomeResolution } from '../kimi/kimi-runtime-home'
+const getHostKimiHome = async () => null
+type KimiHomeResolution = unknown
 import {
   createAuthFilesystemOperation,
   type SharedAuthFilesystemOperation

@@ -18,8 +18,8 @@ import type { MobileE2EEOutboundMemoryBudget } from './mobile-e2ee-outbound-memo
 import { MobileE2EEDesktopOutboundOwner } from './mobile-e2ee-desktop-outbound-owner'
 import { parseRuntimeClientCapabilities } from './runtime-client-capabilities'
 import type { RuntimeCapability } from '../../../shared/protocol-version'
-import type { EventProps } from '../../../shared/telemetry-events'
-import { track } from '../../telemetry/client'
+type EventProps<_T> = Record<string, unknown>
+const track = () => {}
 
 type OutboundBudgetEmitter = EventProps<'remote_outbound_budget_close'>['emitter']
 

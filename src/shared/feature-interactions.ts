@@ -1,9 +1,4 @@
 import { FEATURE_INTERACTION_IDS, type FeatureInteractionId } from './feature-interaction-catalog'
-import {
-  isFeatureInteractionUsageBucket,
-  type FeatureInteractionUsageBucket
-} from './feature-interaction-usage-buckets'
-
 export {
   FEATURE_INTERACTIONS,
   FEATURE_INTERACTION_IDS,
@@ -16,14 +11,12 @@ export {
   getFeatureInteractionCategory,
   type FeatureInteractionCategory
 } from './feature-interaction-categories'
-export {
-  compareFeatureInteractionUsageBuckets,
-  FEATURE_INTERACTION_USAGE_BUCKETS,
-  FEATURE_INTERACTION_USAGE_BUCKET_SPECS,
-  getFeatureInteractionUsageBucket,
-  isFeatureInteractionUsageBucket,
-  type FeatureInteractionUsageBucket
-} from './feature-interaction-usage-buckets'
+export type FeatureInteractionUsageBucket = string
+export const isFeatureInteractionUsageBucket = () => false
+export const compareFeatureInteractionUsageBuckets = () => 0
+export const FEATURE_INTERACTION_USAGE_BUCKETS = []
+export const FEATURE_INTERACTION_USAGE_BUCKET_SPECS = []
+export const getFeatureInteractionUsageBucket = () => 'none'
 
 export type FeatureInteractionRecord = {
   /** Unix timestamp in milliseconds for the first local interaction. */

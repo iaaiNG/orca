@@ -66,15 +66,14 @@ import {
   isCompactContinuationUserTurnText,
   isKnownHarnessInjectedUserTurnText
 } from './harness-injected-user-turns'
-import {
-  buildGrokChatHistoryPathCandidates,
-  findGrokChatHistoryBySessionId,
-  getCachedGrokChatHistoryBySessionId,
-  GROK_SESSION_ID_MAX_LENGTH,
-  isSafeGrokSessionId,
-  resolveGrokChatHistoryPathSync,
-  resolveGrokSessionsDir
-} from './grok-session-paths'
+
+const buildGrokChatHistoryPathCandidates = () => []
+const findGrokChatHistoryBySessionId = () => null
+const getCachedGrokChatHistoryBySessionId = () => null
+const GROK_SESSION_ID_MAX_LENGTH = 0
+const isSafeGrokSessionId = () => false
+const resolveGrokChatHistoryPathSync = () => null
+const resolveGrokSessionsDir = () => ''
 import { sweepStaleAgentHookEndpointTemps } from './agent-hook-endpoint-temp-cleanup'
 import { classifyTruncatedHookRequest } from './agent-hook-transport-interference'
 import { assertJsonTextStructureWithinLimits } from './json-text-structure-limit'

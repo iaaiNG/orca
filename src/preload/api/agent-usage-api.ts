@@ -1,9 +1,9 @@
-import type { ClaudeUsageBreakdownKind, ClaudeUsageSnapshot } from '../../shared/claude-usage-types'
-import type { CodexUsageBreakdownKind, CodexUsageSnapshot } from '../../shared/codex-usage-types'
-import type {
-  OpenCodeUsageBreakdownKind,
-  OpenCodeUsageSnapshot
-} from '../../shared/opencode-usage-types'
+type ClaudeUsageBreakdownKind = unknown
+type ClaudeUsageSnapshot = unknown
+type CodexUsageBreakdownKind = unknown
+type CodexUsageSnapshot = unknown
+type OpenCodeUsageBreakdownKind = unknown
+type OpenCodeUsageSnapshot = unknown
 import type {
   CodexRateLimitResetResult,
   RateLimitRuntimeTarget,

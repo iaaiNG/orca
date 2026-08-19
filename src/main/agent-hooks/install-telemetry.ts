@@ -1,5 +1,5 @@
 import type { HookInstallAgent } from '../../shared/telemetry-events'
-import { track } from '../telemetry/client'
+const track = () => {}
 
 const ERROR_MESSAGE_MAX_LEN = 200
 

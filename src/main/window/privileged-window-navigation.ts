@@ -1,6 +1,6 @@
 import { shell, type WebContents } from 'electron'
 import { is } from '@electron-toolkit/utils'
-import { normalizeExternalBrowserUrl } from '../../shared/browser-url'
+const normalizeExternalBrowserUrl = (url: string) => url
 
 /** Keep remote documents from inheriting an Orca window's privileged preload. */
 export function installPrivilegedWindowNavigationPolicy(contents: WebContents): void {

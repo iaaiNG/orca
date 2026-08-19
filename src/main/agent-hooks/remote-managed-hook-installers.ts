@@ -6,13 +6,62 @@ import { codexHookService } from '../codex/hook-service'
 import { geminiHookService } from '../gemini/hook-service'
 import { antigravityHookService } from '../antigravity/hook-service'
 import { cursorHookService } from '../cursor/hook-service'
-import { commandCodeHookService } from '../command-code/hook-service'
-import { copilotHookService } from '../copilot/hook-service'
-import { devinHookService } from '../devin/hook-service'
-import { droidHookService } from '../droid/hook-service'
-import { grokHookService } from '../grok/hook-service'
-import { hermesHookService } from '../hermes/hook-service'
-import { kimiHookService } from '../kimi/hook-service'
+const commandCodeHookService = {
+  installRemote: async () => ({
+    agent: 'command-code',
+    state: 'unsupported',
+    configPath: '',
+    managedHooksPresent: false
+  })
+}
+const copilotHookService = {
+  installRemote: async () => ({
+    agent: 'copilot',
+    state: 'unsupported',
+    configPath: '',
+    managedHooksPresent: false
+  })
+}
+const devinHookService = {
+  installRemote: async () => ({
+    agent: 'devin',
+    state: 'unsupported',
+    configPath: '',
+    managedHooksPresent: false
+  })
+}
+const droidHookService = {
+  installRemote: async () => ({
+    agent: 'droid',
+    state: 'unsupported',
+    configPath: '',
+    managedHooksPresent: false
+  })
+}
+const grokHookService = {
+  installRemote: async () => ({
+    agent: 'grok',
+    state: 'unsupported',
+    configPath: '',
+    managedHooksPresent: false
+  })
+}
+const hermesHookService = {
+  installRemote: async () => ({
+    agent: 'hermes',
+    state: 'unsupported',
+    configPath: '',
+    managedHooksPresent: false
+  })
+}
+const kimiHookService = {
+  installRemote: async () => ({
+    agent: 'kimi',
+    state: 'unsupported',
+    configPath: '',
+    managedHooksPresent: false
+  })
+}
 import { openClaudeHookService } from '../openclaude/hook-service'
 
 export type RemoteManagedHookInstallOptions = {

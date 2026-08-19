@@ -1,39 +1,31 @@
-import type { BrowserSetAnnotationViewportBridgeArgs } from '../../shared/browser-annotation-viewport-bridge'
-import type {
-  BrowserWebAuthnAccountRequest,
-  BrowserWebAuthnAccountResponse
-} from '../../shared/browser-webauthn-account'
-import type {
-  BrowserSetGrabModeArgs,
-  BrowserSetGrabModeResult,
-  BrowserAwaitGrabSelectionArgs,
-  BrowserGrabResult,
-  BrowserCancelGrabArgs,
-  BrowserCaptureSelectionScreenshotArgs,
-  BrowserCaptureSelectionScreenshotResult,
-  BrowserExtractHoverArgs,
-  BrowserExtractHoverResult
-} from '../../shared/browser-grab-types'
-import type {
-  BrowserContextMenuDismissedEvent,
-  BrowserContextMenuRequestedEvent,
-  BrowserDownloadFinishedEvent,
-  BrowserDownloadProgressEvent,
-  BrowserDownloadRequestedEvent,
-  BrowserPermissionDeniedEvent,
-  BrowserPopupEvent
-} from '../../shared/browser-guest-events'
-import type {
-  BrowserCertificateFailure,
-  BrowserCertificateProceedResult,
-  BrowserCookieImportResult,
-  BrowserLoadError,
-  BrowserSessionProfile,
-  BrowserSessionProfileCreateOptions,
-  BrowserSessionProfileScope,
-  BrowserSessionProfileSource,
-  BrowserViewportOverride
-} from '../../shared/browser-workspace-types'
+type BrowserSetAnnotationViewportBridgeArgs = unknown
+type BrowserWebAuthnAccountRequest = unknown
+type BrowserWebAuthnAccountResponse = unknown
+type BrowserSetGrabModeArgs = unknown
+type BrowserSetGrabModeResult = unknown
+type BrowserAwaitGrabSelectionArgs = unknown
+type BrowserGrabResult = unknown
+type BrowserCancelGrabArgs = unknown
+type BrowserCaptureSelectionScreenshotArgs = unknown
+type BrowserCaptureSelectionScreenshotResult = unknown
+type BrowserExtractHoverArgs = unknown
+type BrowserExtractHoverResult = unknown
+type BrowserContextMenuDismissedEvent = unknown
+type BrowserContextMenuRequestedEvent = unknown
+type BrowserDownloadFinishedEvent = unknown
+type BrowserDownloadProgressEvent = unknown
+type BrowserDownloadRequestedEvent = unknown
+type BrowserPermissionDeniedEvent = unknown
+type BrowserPopupEvent = unknown
+type BrowserCertificateFailure = unknown
+type BrowserCertificateProceedResult = unknown
+type BrowserCookieImportResult = unknown
+type BrowserLoadError = unknown
+type BrowserSessionProfile = unknown
+type BrowserSessionProfileCreateOptions = unknown
+type BrowserSessionProfileScope = unknown
+type BrowserSessionProfileSource = unknown
+type BrowserViewportOverride = unknown
 
 export type BrowserApi = {
   registerGuest: (args: {
