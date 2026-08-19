@@ -276,7 +276,10 @@ class StarNagService {}
 class AgentBrowserBridge {}
 class EmulatorBridge {}
 const browserCertificateTrustController = {}
-const browserManager = {}
+const browserManager = {
+  setSettingsResolver: () => {},
+  setBrowserGuestStateChangedListener: () => {}
+}
 class OffscreenBrowserBackend {}
 const initializeBrowserSessionsForApp = () => {}
 const configureWindowsHostGitEnvironmentReadiness = () => {}
