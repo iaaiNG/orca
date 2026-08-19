@@ -3,7 +3,7 @@ import type {
   WorkspaceSessionState
 } from '../../../shared/workspace-session-state-types'
 import { pruneLocalTerminalScrollbackBuffers } from '../../../shared/workspace-session-terminal-buffers'
-import { normalizeBrowserHistoryEntries } from '../../../shared/workspace-session-browser-history'
+const normalizeBrowserHistoryEntries = (entries: unknown) => (Array.isArray(entries) ? entries : [])
 import {
   buildActiveConnectionIdsAtShutdown,
   buildEditorSessionData,
