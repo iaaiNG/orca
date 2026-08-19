@@ -272,7 +272,10 @@ import {
   onLiveClaudePtysDrained,
   seedLiveClaudePtysFromPersistence
 } from './claude-accounts/live-pty-gate'
-class StarNagService {}
+class StarNagService {
+  start() {}
+  stop() {}
+}
 class AgentBrowserBridge {}
 class EmulatorBridge {}
 const browserCertificateTrustController = {}
