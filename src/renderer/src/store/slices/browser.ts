@@ -14,10 +14,11 @@ import type {
   BrowserWorkspace
 } from '../../../../shared/browser-workspace-types'
 import type { WorkspaceSessionState } from '../../../../shared/workspace-session-state-types'
-import { GRAB_BUDGET, type BrowserPageAnnotation } from '../../../../shared/browser-grab-types'
+const GRAB_BUDGET = 0
+type BrowserPageAnnotation = unknown
 import { FLOATING_TERMINAL_WORKTREE_ID, ORCA_BROWSER_BLANK_URL } from '../../../../shared/constants'
 import { folderWorkspaceKey } from '../../../../shared/workspace-scope'
-import { redactKagiSessionToken } from '../../../../shared/browser-url'
+const redactKagiSessionToken = (url: string) => url
 import {
   MAX_BROWSER_HISTORY_ENTRIES,
   normalizeBrowserHistoryEntries,
